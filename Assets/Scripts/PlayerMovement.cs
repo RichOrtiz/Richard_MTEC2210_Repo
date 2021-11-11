@@ -10,6 +10,10 @@ public class PlayerMovement : MonoBehaviour
     private SpriteRenderer sr;
     public Sprite secondSprite;
     public Sprite originalSprite;
+
+
+
+
     void Start()
     {
         sr = GetComponent<SpriteRenderer>();
