@@ -4,18 +4,20 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     public float speed;
-
+    public float jump;
     public Transform bike;
     public GameObject knucklesPrefab;
     private SpriteRenderer sr;
     public Sprite secondSprite;
     public Sprite originalSprite;
 
+    private Rigidbody2D rb;
 
 
 
     void Start()
     {
+        rb = GetComponent<Rigidbody2D>();
         sr = GetComponent<SpriteRenderer>();
         Debug.Log("Bike world position: " + bike.position);
         Debug.Log("Bike local position: " + bike.localPosition);
@@ -23,6 +25,8 @@ public class PlayerMovement : MonoBehaviour
 
     void Update()
     {
+        float xPos = Input.GetAxis("Horizontal");
+        float extra = Time.deltaTime * speed * xPos;
         //-1 if holding down A and +1 holding down D
         /*float xMovement = Input.GetAxis("Horizontal");
         transform.Translate(speed * Time.deltaTime * xMovement, 0, 0);
@@ -63,7 +67,12 @@ public class PlayerMovement : MonoBehaviour
             sr.sprite = secondSprite;
 
         }
-
+        if (Input.GetKey(KeyCode.Space))
+        {
+            rb.AddForce(Vector2.up * jump);
+            //sr.flipX = false;
+            //sr.sprite = originalSprite;
+        }
 
 
 
@@ -72,10 +81,10 @@ public class PlayerMovement : MonoBehaviour
         {
             shoot();
         }
-        if (Input.GetKeyDown(KeyCode.Space))
+        /*if (Input.GetKeyDown(KeyCode.Space))
         {
             spawnKnuckles();
-        }
+        }*/
     }
 
 

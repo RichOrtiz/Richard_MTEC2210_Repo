@@ -8,6 +8,7 @@ public class HosniScript : MonoBehaviour
     private SpriteRenderer beardSprite;
     private SpriteRenderer hairSprite;
     private SpriteRenderer faceSprite;
+    public Color car;
     // Start is called before the first frame update
     void Start()
     {
@@ -20,13 +21,14 @@ public class HosniScript : MonoBehaviour
 
     private void Update()
     {
-        //Debug.Log(beardSprite.color);
+        Debug.Log(car);
         //beardSprite.color = new Color(50, 150, 100, 50);
     }
     public void ColorChange()
     {
-        beardSprite.color = new Color(0, 100, 50, 255);
-        hairSprite.color = new Color(60, 150, 0,255);
+        beardSprite.color = Color.magenta;
+        //beardSprite.color = new Color(0, 100, 50, 255);
+        hairSprite.color = car;
         faceSprite.color = new Color(0, 0, 150,255);
     }
 }
